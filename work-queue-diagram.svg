@@ -1,0 +1,178 @@
+<svg viewBox="0 0 1400 800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .bg { fill: #0f0f1e; }
+      .shape { fill: #1a1a2e; stroke: #16c79a; stroke-width: 2.5; }
+      .shape-alt { fill: #252544; stroke: #16c79a; stroke-width: 2.5; }
+      .redis-shape { fill: #dc382c; stroke: #a02520; stroke-width: 2.5; }
+      .text { fill: #e0e0e0; font-family: 'Arial', sans-serif; font-size: 18px; }
+      .title { fill: #16c79a; font-family: 'Arial', sans-serif; font-size: 32px; font-weight: bold; }
+      .arrow { fill: none; stroke: #16c79a; stroke-width: 2.5; marker-end: url(#arrowhead); }
+      .arrow-dashed { fill: none; stroke: #7c7c9e; stroke-width: 2; stroke-dasharray: 5,5; marker-end: url(#arrowhead-gray); }
+      .label { fill: #b0b0b0; font-family: 'Arial', sans-serif; font-size: 14px; font-style: italic; }
+      .icon-text { fill: #ffffff; font-family: 'Arial', sans-serif; font-size: 12px; font-weight: bold; }
+      .glow { filter: drop-shadow(0 0 8px #16c79a); }
+      .redis-glow { filter: drop-shadow(0 0 8px #dc382c); }
+    </style>
+    
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#16c79a" />
+    </marker>
+    
+    <marker id="arrowhead-gray" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#7c7c9e" />
+    </marker>
+    
+    <!-- Gradient for queue -->
+    <linearGradient id="queueGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#252544;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect class="bg" width="1400" height="800"/>
+  
+  <!-- Animated background particles -->
+  <circle cx="200" cy="150" r="2" fill="#16c79a" opacity="0.3">
+    <animate attributeName="opacity" values="0.3;0.7;0.3" dur="3s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="1200" cy="200" r="2" fill="#16c79a" opacity="0.3">
+    <animate attributeName="opacity" values="0.3;0.7;0.3" dur="4s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="700" cy="100" r="2" fill="#16c79a" opacity="0.3">
+    <animate attributeName="opacity" values="0.3;0.7;0.3" dur="2.5s" repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- Title with icon -->
+  <text class="title" x="600" y="50">⚡ WorkQueue System</text>
+  
+  <!-- Producer with icon -->
+  <g class="glow">
+    <rect class="shape" rx="15" x="50" y="250" width="160" height="120"/>
+    <text class="text" x="95" y="300" font-size="40">📤</text>
+    <text class="text" x="85" y="340">Producer</text>
+    <text class="label" x="70" y="360" font-size="11">Generates tasks</text>
+  </g>
+  
+  <!-- /enqueue endpoint -->
+  <g class="glow">
+    <rect class="shape-alt" rx="10" x="310" y="270" width="140" height="80"/>
+    <text class="text" x="335" y="305" font-size="14">POST</text>
+    <text class="text" x="328" y="330">/enqueue</text>
+  </g>
+  
+  <!-- task_queue with Redis icon -->
+  <g class="redis-glow">
+    <rect class="redis-shape" rx="15" x="550" y="250" width="200" height="120"/>
+    
+    <!-- Redis logo simplified -->
+    <g transform="translate(590, 270)">
+      <rect x="0" y="15" width="30" height="25" fill="#ffffff" opacity="0.9" rx="2"/>
+      <rect x="35" y="15" width="30" height="25" fill="#ffffff" opacity="0.9" rx="2"/>
+      <rect x="70" y="15" width="30" height="25" fill="#ffffff" opacity="0.9" rx="2"/>
+      <rect x="18" y="0" width="30" height="25" fill="#ffffff" opacity="0.9" rx="2"/>
+      <rect x="52" y="0" width="30" height="25" fill="#ffffff" opacity="0.9" rx="2"/>
+    </g>
+    
+    <text class="text" x="590" y="335" fill="#ffffff">Redis Queue</text>
+    <text class="label" x="575" y="358" fill="#ffcccc" font-size="11">task_queue</text>
+  </g>
+  
+  <!-- Worker with icon -->
+  <g class="glow">
+    <rect class="shape" rx="15" x="900" y="250" width="160" height="120"/>
+    <text class="text" x="945" y="300" font-size="40">⚙️</text>
+    <text class="text" x="935" y="340">Worker</text>
+    <text class="label" x="918" y="360" font-size="11">Processes jobs</text>
+  </g>
+  
+  <!-- ProcessTask() -->
+  <g class="glow">
+    <rect class="shape-alt" rx="10" x="900" y="480" width="160" height="100"/>
+    <text class="text" x="925" y="520" font-size="16">ProcessTask()</text>
+    <text class="label" x="915" y="545" font-size="12">Execute jobs</text>
+    <text class="label" x="920" y="565" font-size="12">Async worker</text>
+  </g>
+  
+  <!-- Metrics endpoint -->
+  <g class="glow">
+    <rect class="shape-alt" rx="10" x="1150" y="130" width="180" height="100"/>
+    <text class="text" x="1195" y="165" font-size="36">📊</text>
+    <text class="text" x="1185" y="205">GET /metrics</text>
+    <text class="label" x="1175" y="223" font-size="11">Prometheus format</text>
+  </g>
+  
+  <!-- Log output -->
+  <g class="glow">
+    <rect class="shape" rx="10" x="1150" y="480" width="140" height="100"/>
+    <text class="text" x="1185" y="520" font-size="36">📝</text>
+    <text class="text" x="1178" y="560">log.txt</text>
+    <text class="label" x="1165" y="575" font-size="11">Output logs</text>
+  </g>
+  
+  <!-- Database/Storage -->
+  <g class="glow">
+    <ellipse class="shape-alt" cx="650" cy="540" rx="100" ry="60"/>
+    <text class="text" x="615" y="535" font-size="30">💾</text>
+    <text class="text" x="608" y="565">Storage</text>
+  </g>
+  
+  <!-- Arrows and labels -->
+  
+  <!-- Producer to /enqueue -->
+  <path class="arrow" d="M 210 310 L 310 310"/>
+  <text class="label" x="230" y="300">enqueue job</text>
+  
+  <!-- /enqueue to Redis -->
+  <path class="arrow" d="M 450 310 L 550 310"/>
+  <text class="label" x="465" y="300">push</text>
+  
+  <!-- Redis to Worker -->
+  <path class="arrow" d="M 750 310 L 900 310"/>
+  <text class="label" x="790" y="300">pop job</text>
+  
+  <!-- Worker to ProcessTask -->
+  <path class="arrow" d="M 980 370 L 980 480"/>
+  <text class="label" x="990" y="430">execute</text>
+  
+  <!-- ProcessTask to Log -->
+  <path class="arrow" d="M 1060 530 L 1150 530"/>
+  <text class="label" x="1080" y="520">write</text>
+  
+  <!-- Worker to Metrics -->
+  <path class="arrow-dashed" d="M 1030 250 L 1170 230"/>
+  <text class="label" x="1080" y="220">report stats</text>
+  
+  <!-- Redis to Storage -->
+  <path class="arrow-dashed" d="M 650 370 L 650 480"/>
+  <text class="label" x="660" y="430">persist</text>
+  
+  <!-- Status indicators -->
+  <circle cx="130" cy="260" r="6" fill="#16c79a">
+    <animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="980" cy="260" r="6" fill="#16c79a">
+    <animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- Info box -->
+  <g>
+    <rect x="50" y="650" width="300" height="120" rx="10" fill="#1a1a2e" stroke="#16c79a" stroke-width="2" opacity="0.8"/>
+    <text class="text" x="70" y="680" font-size="16" fill="#16c79a">System Flow:</text>
+    <text class="label" x="70" y="705" font-size="12">1. Producer sends tasks to queue</text>
+    <text class="label" x="70" y="725" font-size="12">2. Redis stores tasks reliably</text>
+    <text class="label" x="70" y="745" font-size="12">3. Workers process concurrently</text>
+    <text class="label" x="70" y="765" font-size="12">4. Metrics track performance</text>
+  </g>
+  
+  <!-- Stats box -->
+  <g>
+    <rect x="1050" y="650" width="300" height="120" rx="10" fill="#1a1a2e" stroke="#16c79a" stroke-width="2" opacity="0.8"/>
+    <text class="text" x="1070" y="680" font-size="16" fill="#16c79a">⚡ Performance:</text>
+    <text class="label" x="1070" y="705" font-size="12">• Async processing with goroutines</text>
+    <text class="label" x="1070" y="725" font-size="12">• Redis pub/sub for real-time updates</text>
+    <text class="label" x="1070" y="745" font-size="12">• Horizontal scaling support</text>
+    <text class="label" x="1070" y="765" font-size="12">• Prometheus metrics integration</text>
+  </g>
+</svg>
