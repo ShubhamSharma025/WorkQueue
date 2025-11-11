@@ -1,0 +1,3 @@
+com\workqueue\worker\WorkerService.class
+com\workqueue\worker\WorkerController.class
+com\workqueue\worker\WorkerApplication.class
